@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <!-- Our shop section -->
+      <div id="about" class="shop">
+         <div class="container-fluid">
+            {% for ha in haqida %}
+            <div class="row">
+               <div class="col-md-5">
+                  <div  class="shop_img">
+                     <figure><img src="{{ha.img.url}}" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-7 padding_right0">
+                  <div class="max_width">
+                     <div class="titlepage">
+                        <a href="{{ ha.get_absolute_url }}"><h2>{{ha.name}}</h2></a>
+                        <p>{{ha.bio}}</p>
+                        <a class="read_more" href="#">{{ha.status}}</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+      <!-- end Our shop section -->
+     {% endblock content %}

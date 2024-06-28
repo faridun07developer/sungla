@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <!-- about section -->
+      <div class="about">
+         <div class="container">
+             {% for ab in about %}
+            <div class="row d_flex">
+               <div class="col-md-5">
+                  <div class="about_img">
+                     <figure><img src="{{ab.img.url}}" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="titlepage">
+                      <a href="{{ ab.get_absolute_url }}"><h2>{{ab.name}}</h2></a>
+                     <p>{{ab.bio}}</p>
+                  </div>
+                  <a class="read_more" href="#">{{ab.status}}</a>
+               </div>
+            </div>
+             {% endfor %}
+         </div>
+      </div>
+      <!-- about section -->
+     {% endblock content%}

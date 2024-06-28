@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+      <!-- banner -->
+      <section class="banner_main">
+         <div id="banner1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#banner1" data-slide-to="0" class="active"></li>
+               <li data-target="#banner1" data-slide-to="1"></li>
+               <li data-target="#banner1" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+               {% for ca in carus %}
+               {% if forloop.counter < 2 %}
+               <div class="carousel-item active">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="text-bg">
+                           <a href="{{ ca.get_absolute_url }}"><h1> <span class="blu">Welcome <br></span>{{ca.name}}</h1></a>
+                           <figure><img src="{{ca.img.url}}" alt="#"/></figure>
+                           <a class="read_more" href="#">{{ca.status}}</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% if ca.id > 1 %}
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="text-bg">
+                           <a href="{{ ca.get_absolute_url }}"><h1> <span class="blu">Welcome <br></span>{{ca.name}}</h1></a>
+                           <figure><img src="{{ca.img.url}}" alt="#"/></figure>
+                           <a class="read_more" href="#">Shop Now</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+               {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+         </div>
+      </section>
+      <!-- end banner -->
+      <!-- about section -->
+      <div class="about">
+         <div class="container">
+            {% for ab in about %}
+            <div class="row d_flex">
+               <div class="col-md-5">
+                  <div class="about_img">
+                     <figure><img src="{{ab.img.url}}" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="titlepage">
+                     <a href="{% url 'aboutDetailView' ab.id %}"><h2>{{ab.name}}</h2></a>
+                     <p>{{ab.bio}}</p>
+                  </div>
+                  <a class="read_more" href="{% url 'aboutDetailView' ab.id %}">{{ab.status}}</a>
+               </div>
+            </div>
+
+         </div>
+         {% endfor %}
+      </div>
+      <!-- about section -->
+      <!-- Our  Glasses section -->
+      <div class="glasses">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <div class="titlepage">
+                     <h2>Our Glasses</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor
+                        e et dolore magna aliqua. Ut enim ad minim veniam, qui
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               {% for su in sun %}
+               {% if forloop.counter <= 8 %}
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                  <div class="glasses_box">
+                     <figure><img src="{{su.img.url}}" alt="#"/></figure>
+                     <h3><span class="blu">$</span>{{su.price}}</h3>
+                     <a href="{{ su.get_absolute_url }}" ><p>{{su.name}}</p></a>
+                  </div>
+               </div>
+               {% endif %}
+               {% endfor %}
+               <div class="col-md-12">
+                  <a class="read_more" href="{% url 'glasses' %}">Koproq korish</a>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end Our  Glasses section -->
+      <!-- Our shop section -->
+      <div id="about" class="shop">
+         <div class="container-fluid">
+            {% for ha in haqida %}
+            <div class="row">
+               <div class="col-md-5">
+                  <div  class="shop_img">
+                     <figure><img src="{{ha.img.url}}" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-7 padding_right0">
+                  <div class="max_width">
+                     <div class="titlepage">
+                        <a href="{{ ha.get_absolute_url }}"><h2>{{ha.name}}</h2></a>
+                        <p>{{ha.bio}}</p>
+                        <a class="read_more" href=9#">{{ha.status}}</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+      <!-- end Our shop section -->
+      <!-- clients section -->
+      <div class="clients">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>What say our clients</h2>
+                     <p>orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="myCarousel" class="carousel slide clients_Carousel " data-ride="carousel">
+                     <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="container">
+                              <div class="carousel-caption ">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="clients_box">
+                                          <figure><img src="{% static 'images/our.png' %}" alt="#"/></figure>
+                                          <h3>Sandy Mark</h3>
+                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact  a more-or-less normal distribution of letters,</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="clients_box">
+                                          <figure><img src="{% static 'images/our.png' %}" alt="#"/></figure>
+                                          <h3>Sandy Mark</h3>
+                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact  a more-or-less normal distribution of letters,</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="clients_box">
+                                          <figure><img src="{% static 'images/our.png' %}" alt="#"/></figure>
+                                          <h3>Sandy Mark</h3>
+                                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact  a more-or-less normal distribution of letters,</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                     <i class='fa fa-angle-left'></i>
+                     </a>
+                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                     <i class='fa fa-angle-right'></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end clients section -->
+      <!-- contact section -->
+      <div id="contact" class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <form id="request" class="main_form">
+                     <div class="row">
+                        <div class="col-md-12 ">
+                           <h3>Contact Us</h3>
+                        </div>
+                        <div class="col-md-12 ">
+                           <input class="contactus" placeholder="Name" type="type" name="Name"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Email" type="type" name="Email">                          
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactusmess" placeholder="Message" type="type" Message="Name">
+                        </div>
+                        <div class="col-md-12">
+                           <button class="send_btn">Send</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="map_section">
+               <div id="map">
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <!-- end contact section -->
+{% endblock content %}

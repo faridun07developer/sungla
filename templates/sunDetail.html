@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="{{sun.img.url}}">
+<h1>Name: {{sun.name}}</h1>
+<h2>Price: {{sun.price}}</h2>
+<a href="{% url 'suns_create' %}">Yangilik kiritish</a><br>
+<a href="{% url 'suns_delete' sun.slug %}">Yangilik ochirish</a><br>
+<a href="{% url 'suns_update' sun.slug %}">Yangilik ozgartirish</a><br>
+</body>
+</html>

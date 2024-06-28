@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <!-- Our  Glasses section -->
+      <div class="glasses">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <div class="titlepage">
+                     <h2>Our Glasses</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor
+                        e et dolore magna aliqua. Ut enim ad minim veniam, qui
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid">
+            <div class="row">
+               {% for su in sun %}
+               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                  <div class="glasses_box">
+                     <figure><img src="{{su.img.url}}" alt="#"/></figure>
+                     <h3><span class="blu">$</span>{{su.price}}</h3>
+                     <a href="{{ su.get_absolute_url }}" ><p>{{su.name}}</p></a>
+                  </div>
+               </div>
+               {% endfor %}
+               <div class="col-md-12">
+                  <a class="read_more" href="#">Read More</a>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock content %}

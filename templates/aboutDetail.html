@@ -1,0 +1,43 @@
+{% load hitcount_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="{{about.img.url}}">
+<h1>Name: {{about.name}}</h1>
+<h2>Price: {{about.price}}</h2>
+<h3>Korishlar soni: {% get_hit_count for about %}</h3>
+<p>Bio: {{about.bio}}</p>
+</body>
+</html>
+                            <h1>Izohlar</h1>
+{% for comment in comments %}
+            <div class="comments" style="padding:10px">
+                <p class="font-weight-bold">
+                    {{comment.user}}
+                    <span class="text-muted font-weight-normal" >
+                        {{comment.created_time}}
+                    </span>
+                </p>
+                {{ comment.body  |  linebreaks }}
+            </div>
+{% endfor %}
+{% if user.is_authenticated %}
+<div class="col-md-8 card mb-4 mt-5">
+    <div class="card-boy">
+        <h3> Izoh qoldirish </h3>
+        <form method="POST" style="margin-top: 1.3em">{% csrf_token %}
+            {{comment_form.as_p}}
+            <button type="submit" class="btn btn-primary btn-lg">Yuborish</button>
+        </form>
+    </div>
+</div>
+{% else %}
+    <div class="card-boy">
+        <p class="text-danger">Faqatgina royxatdan otsangizgina izoh yoza olasiz</p>
+        <h3>Buning uchun <a href="{% url 'sing_up'%}">royhatdan otish</a> va <a href="{% url 'login'%}">Login</a></h3>
+    </div>
+{% endif %}

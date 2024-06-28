@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Qidiruv natijalari{% endblock %}
+
+{% block contant %}
+    <h2>Qidiruv natijalari</h2>
+    {% for kozoynak in barcha_kozoynaklar %}
+      <h3>
+        <a href="{% url 'haqidaDetailView' kozoynak.slug %}" class="text-danger">{{ kozoynak.name }}</a>
+        <p><img src="{{ kozoynak.img.url }}" width="30%"></p>
+      <p>{{kozoynak.body | truncatewords:10 }}</p>
+      </h3>
+    {% endfor %}
+{% endblock %}
